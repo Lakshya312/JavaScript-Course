@@ -40,7 +40,7 @@ productHTML += `<div class="product-container">
 
           <div class="product-spacer"></div>
 
-          <div class="added-to-cart">
+          <div class="js-added-to-cart-${product.id} added-to-cart">
             <img src="images/icons/checkmark.png">
             Added
           </div>
@@ -58,7 +58,7 @@ document.querySelectorAll('.js-add-to-cart')
     button.addEventListener('click', ()=>{
       const {productId} = button.dataset;
       const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
-      const quantity = Number(quantitySelector.value) ;
+      const quantity = Number(quantitySelector.value);
 
       let matchingItem;
 
@@ -79,10 +79,14 @@ document.querySelectorAll('.js-add-to-cart')
       let cartQuantity = 0;
       cart.forEach((item)=>{
         cartQuantity+=item.quantity ;
+
       });
       
       document.querySelector('.js-cart-quantity')
         .innerHTML = cartQuantity;
-    })
 
-  })
+      const displayMessage = document.querySelector(`.js-added-to-cart-${productId}`);
+      displayMessage.classList.add('added-to-cart-visible');
+    });
+  });
+
