@@ -656,5 +656,57 @@ const products = [
       "apparel",
       "mens"
     ]
+  },
+  {
+    id: "a5f8d2e1-6c39-4b89-9e72-1d0b4c6f8a2e",
+    image: "images/products/backpack.jpg",
+    name: "Glowic Laptop Backpack, 2 compartments, bottle holder, organizer, school bag for boys and girls, college bag for women and men, office bag, travel bag",
+    rating: {
+      stars: 4.5,
+      count: 57
+    },
+    priceCents: 8180,
+    keywords: [
+      "bagpack",
+      "bags",
+      "pack",
+      "schoolbag"
+    ]
+  },
+  {
+    id: "3b9e47f2-8d1a-4c56-b0e3-7f2a5d8c1b4f",
+    image: "images/products/umbrella.jpg",
+    name: "Portable Auto Travel Umbrella - Windproof for Rain, Strong for Wind ",
+    rating: {
+      stars: 4.0,
+      count: 74
+    },
+    priceCents: 5840,
+    keywords: [
+      "umbrella",
+      "rain",
+      "sunshade",
+      "shield",
+      "screen",
+      "brolly"
+    ]
+  },
+  {
+    id: "e7c4a0d9-2b6f-4e58-9c1d-3a8b5e6f0c2a",
+    image: "images/products/Sony_Playstation5.jpg",
+    name: "Sony PlayStation®5 Digital Edition (slim) Console Video Game ",
+    rating: {
+      stars: 5.0,
+      count: 436
+    },
+    priceCents: 52613,
+    keywords: [
+      "PlayStation 5",
+      "ps5",
+      "games",
+      "console",
+      "dualsense controller",
+      "digital edition"
+    ]
   }
 ];
