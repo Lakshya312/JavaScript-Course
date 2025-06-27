@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 8e
+</title>
+<style>
+
+</style>
+</head>
+<body>
+    <script>
+      function isSameProduct(product1 , product2){
+        return (product1.name === product2.name)&&(product1.price === product2.price)? true : false ;
+      }
+
+
+      const similar1 = isSameProduct(
+        {name: 'volleyball' ,price: 2000 },
+        {name: 'volleyball' ,price: 2000 }
+      )
+      console.log('Similar price ?',similar1);
+
+      const similar2 = isSameProduct(
+        {name: 'volleyball' ,price: 2000 },
+        {name: 'basketball' ,price: 2000 }
+      )
+      console.log('Similar price ?',similar2);
+
+      const similar3 = isSameProduct(
+        {name: 'volleyball' ,price: 2000 },
+        {name: 'basketball' ,price: 3000 }
+      )
+      console.log('Similar price ?',similar3);
+
+    </script>
+</body>
+</html>

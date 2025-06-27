@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      rough
+</title>
+<style>
+
+</style>
+</head>
+<body>
+
+  <select name="numbers" id="numbers">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+  </select>
+
+    <script>
+      const todoList = [
+  { name: 'wash clothes', dueDate: '2025-03-12' },
+  { name: 'make breakfast', dueDate: '2025-04-11' }
+];
+
+const inputName = 'make breakfast';
+const inputDate = '2025-04-11';
+
+const isDuplicate = todoList.some((item) => {
+  return item.name === inputName && item.dueDate === inputDate;
+});
+
+console.log(isDuplicate); // true ✅
+
+
+    </script>
+</body>
+</html>

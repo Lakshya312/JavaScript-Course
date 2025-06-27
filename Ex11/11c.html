@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 11c
+</title>
+<style>
+
+</style>
+</head>
+<body>
+    <script>
+      function arraySwap(array){
+        const lastValue = array[array.length-1];
+        const firstValue = array[0];
+        array[0] = lastValue;
+        array[array.length-1] = firstValue;
+        console.log(array);
+
+      }
+      arraySwap([1,20,22,24,5]);
+      arraySwap(['hi', 'hello', 'good']);
+    </script>
+</body>
+</html>

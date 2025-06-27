@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Subscribe-By-ChatGBT
+</title>
+<style>
+  #subscribeBtn {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  #subscribeBtn.subscribed {
+    background-color: green;
+  }
+
+</style>
+</head>
+<body>
+
+
+    <button id="subscribeBtn">Subscribe</button>
+
+    <script>
+      document.getElementById("subscribeBtn").addEventListener("click", function () {
+      this.classList.toggle("subscribed");
+              });
+
+    </script>
+</body>
+</html>

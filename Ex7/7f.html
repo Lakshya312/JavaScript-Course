@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 7f
+</title>
+<style>
+
+</style>
+</head>
+<body>
+    <script>
+      function convertTocelsius(fahrenheit){
+      return (fahrenheit - 32)*5/9;
+      }
+
+      function convertToFahrenheit(celsius){
+      return (celsius*9/5) + 32;
+      }
+
+      function convertTemperature(degree , unit){
+        if(unit === 'F'){
+          console.log(`${convertTocelsius(degree)}${unit}`);
+        }else if (unit === 'C') {
+          console.log(`${convertToFahrenheit(degree)}${unit}`);
+        }
+      }
+      convertTemperature(25,'C');
+      convertTemperature(86,'F');
+    </script>
+</body>
+</html>

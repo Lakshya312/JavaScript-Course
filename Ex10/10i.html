@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 10i
+</title>
+</head>
+<style>
+  body{
+  background-color: rgb(0,0,0);
+  font-family: Arial;
+}
+button{
+  background-color: rgb(51,51,51);
+  color: white;
+  border: none;
+  padding: 15px 22.5px ;
+  border-radius: 50px;
+  font-size: 26px ;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.operators{
+background-color:rgb(254, 160, 10);
+}
+.calculation{
+  color: white;
+  font-size: 45px;
+  height: 10px;
+  margin-top: 25px;  
+}
+.clear-button{
+  font-size: 17px;
+  border-radius: 50px;
+  padding: 20px 10px;
+}
+.operator2{
+  padding: 15px 25px;
+}
+</style>
+<body>
+  <!-- Initialize display with the last calculation -->
+    <p class="display-calculation calculation">
+      <!-- This will be filled by JavaScript -->
+  </p>
+  
+  <!-- Rest of your calculator buttons remain the same -->
+  <p>
+      <button onclick="updateCalculation('1')">1</button>
+      <button onclick="updateCalculation('2')">2</button>
+      <button onclick="updateCalculation('3')">3</button>
+      <button class="operators" onclick="updateCalculation('+')">+</button>
+  </p>
+  <p>
+      <button onclick="updateCalculation('4')">4</button>
+      <button onclick="updateCalculation('5')">5</button>
+      <button onclick="updateCalculation('6')">6</button>
+      <button class="operators operator2" onclick="updateCalculation('-')">-</button>
+  </p>
+  <p>
+      <button onclick="updateCalculation('7')">7</button>
+      <button onclick="updateCalculation('8')">8</button>
+      <button onclick="updateCalculation('9')">9</button>
+      <button class="operators operator2" onclick="updateCalculation('*')">*</button>
+    </p>
+      <p>
+        <button onclick="updateCalculation('0')">0</button>
+        <button class="operator2" onclick="updateCalculation('.')">.</button>
+        <button onclick="
+        calculation = eval(calculation);
+        console.log(calculation);
+        localStorage.setItem('value', JSON.stringify(calculation));
+        document.querySelector('.display-calculation').innerHTML = calculation;">=</button>
+    
+        <button class="operators operator2" onclick="updateCalculation('/')">/</button>
+      </p>
+  <p>
+      <button class=clear-button onclick="
+          calculation = '';
+          console.log(calculation);
+          localStorage.removeItem('value');
+          document.querySelector('.display-calculation').innerHTML = '';
+      ">Clear</button>
+  </p>
+ 
+    <script>
+      let calculation = localStorage.getItem('value') || '';
+
+      document.querySelector('.display-calculation')
+        .innerHTML = calculation ;
+      
+      function updateCalculation(value){
+        calculation += value ;
+        console.log(calculation);
+
+      localStorage.setItem('value',calculation);
+
+      document.querySelector('.display-calculation')
+        .innerHTML = calculation ;
+      }
+
+    </script>
+</body>
+</html>

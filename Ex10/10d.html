@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 10d
+</title>
+<style>
+  .toggle-button{
+    border: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(230, 230, 230);
+  }
+  .gaming-on{
+    background-color: black;
+    color: white;
+  }
+</style>
+</head>
+<body>
+    <button class="toggle-button gaming-off" 
+    onclick="gameCode()"
+    >Gaming</button>
+    <script>
+      function gameCode(){
+        const button = document.querySelector('.toggle-button');
+
+        if(!(button.classList.contains('gaming-on'))){
+          button.classList.add('gaming-on');
+          button.classList.remove('gaming-off');
+        }
+        else{
+          button.classList.remove('gaming-on');
+          button.classList.add('gaming-off')
+        }
+      }
+    </script>
+</body>
+</html>

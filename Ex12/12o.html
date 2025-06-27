@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+Ex 12o
+</title>
+<style>
+
+</style>
+</head>
+<body>
+    <script>
+      function removeEgg(foods){
+        let result = 0;
+        return foods.filter(value => {
+          
+          if(value === 'egg' && result < 2){
+            result ++
+            return false ;
+          }
+          return true ;
+        }
+      );
+      };
+      console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+
+    </script>
+</body>
+</html>

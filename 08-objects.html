@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Objects
+</title>
+<style>
+
+</style>
+</head>
+<body>
+   <!-- What is an object ?
+  -> An object groups multiple values together.  -->
+  <script>
+   /* const product = {
+      name: 'socks',
+      price: 1090 
+    };
+    console.log(product);
+    console.log(typeof product);
+    console.log(product.name);
+    console.log(product.price);
+
+    product.name = 'Cotton socks';
+    console.log(product);
+    console.log(product.name); 
+
+    product.newProperty = true;
+    console.log(product);
+
+    delete product.newProperty;
+    console.log(product);
+    */
+    
+
+    /*
+    const product2 = {
+      name: 'shirt',
+      ['delivery-time']: '1Day', // or 
+      'time-zone': '24hr', // this is also correct.
+      rating: {
+        stars: 4.5,
+        count: 87
+      },
+      fun: function function1(){
+        console.log('function inside object');
+      }
+
+    };
+    console.log(product2);
+    console.log(product2.name);
+    console.log(product2['name']);
+    console.log(product2['delivery-time']);
+    console.log(product2['time-zone']);
+    //console.log(product2.delivery-time); tries to do maths here we use bracket notation 
+    // like this ['delivery-time']
+
+    console.log(product2.rating.count);
+    product2.fun();
+
+    console.log(typeof console.log)//console.log ->is a function
+    console.log(typeof console)//console -> is an object
+
+    // function inside the object is called method e.g Math.random()
+
+    //Converting javascript object to JSON
+    const convertToJSON = JSON.stringify(product2);
+     console.log(convertToJSON);
+     console.log(typeof convertToJSON);
+
+   //Converting javascript JSON to object
+   const jsonString = JSON.stringify(product2);
+    console.log(JSON.parse(jsonString));*/
+    
+    
+    console.log('hello.'.length); // gives the length of the string 
+
+    console.log('hello'.toUpperCase());
+    console.log('hello.'.toUpperCase());
+
+    const object1 = {
+      message: 'hello'
+    };
+    const object2 = object1;
+
+    console.log(object2 === object1);
+    console.log(object2.message === object1.message);
+
+    const object3 = {
+      message: 'Good Job!'
+    };
+    console.log(object1===object3);
+    console.log(object1.message===object3.message);
+
+    const object4 = {
+      message: 'Good Job!',
+      price: 799
+    };
+    // const message = object4.message ;
+    const {message,price} = object4;
+    console.log(message);
+    console.log({message});
+    console.log(price);
+    object4[name]='lakshya'; //another ay to add with appearing of the property name
+    console.log(object4);
+
+    const object5 = {
+      //message: message
+      message ,
+      // method: function function1(){
+      //   console.log('method');
+      method(){
+        console.log('method');
+      }
+    };
+    console.log(object5);
+    object5.method();
+  </script>
+</body>
+</html>

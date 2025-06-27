@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter Example</title>
+</head>
+<body>
+    <p class="js-counter-display"> <!-- Display here --> </p>
+    <button onclick="incrementCounter()">+1</button>
+
+    <script>
+        // 1. Load saved count (or default to 0)
+        let count = localStorage.getItem('savedCount') || 0;
+
+        // 2. Update display ON PAGE LOAD (outside function)
+        document.querySelector('.js-counter-display').textContent = count;
+
+        // 3. Function to increment (updates display WHEN BUTTON IS CLICKED)
+        function incrementCounter() {
+            count++;
+            localStorage.setItem('savedCount', count);
+            document.querySelector('.js-counter-display').textContent = count;
+        }
+    </script>
+</body>
+</html>

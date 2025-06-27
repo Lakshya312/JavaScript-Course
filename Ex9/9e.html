@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 9e
+</title>
+<style>
+
+</style>
+</head>
+<body>
+  <input class="js-input-text" placeholder="Enter your name" onkeydown="
+    console.log(event.key);
+    if(event.key === 'Enter'){
+      textType();
+    }
+    ">
+  <button onclick="
+  textType();
+  ">Submit</button>
+  <p class="js-text"></p>
+
+    <script>
+      function textType(){
+      const name = document.querySelector('.js-input-text');
+      const text = name.value;
+      document.querySelector('.js-text')
+        .innerHTML = `Your Name is: ${text}`; 
+      }
+    </script>
+</body>
+</html>

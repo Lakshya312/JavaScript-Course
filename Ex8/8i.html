@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 8i
+</title>
+<style>
+
+</style>
+</head>
+<body>
+  <button onclick="
+      guessTheGame('heads');
+      ">
+      heads
+      </button>
+      <button onclick="
+      guessTheGame('tails');
+      ">
+      tails
+  </button>
+
+  <button onclick="
+    score.wins = 0;
+    score.loses = 0;
+    localStorage.removeItem('score');
+  ">
+    Reset Button
+  </button>
+
+    <script>
+      const score = JSON.parse(localStorage.getItem('score')) || {wins:0, loses:0} ;
+
+      function guessTheGame(guess){
+      const randomNumber = Math.random();
+      const result = (randomNumber >= 0 && randomNumber <0.5)? 'heads' : 'tails';
+
+      console.log(`Your move: ${guess}.
+Computer move: ${result}.
+${guess === result ? 'You Won!':'You Lose'}`);
+
+      if (guess === result){
+        score.wins++ ;
+      }else if (guess !== result){
+        score.loses++ ;
+      }
+      console.log('Score:',score);
+
+      localStorage.setItem('score',JSON.stringify(score));
+      }
+
+
+      
+      </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+Ex 12h
+</title>
+<style>
+
+</style>
+</head>
+<body>
+  <button class="add-button">Add</button>
+  <button class="remove-button">Remove</button>
+    <script>
+      let number = 2;
+      setInterval(() => {
+      if(document.title === 'App'){
+          document.title = `(${number}) New messages`;
+        }
+      else{
+        document.title = 'App';
+      }
+      },1000);
+
+      document.querySelector('.add-button')
+      .addEventListener('click', () => {number++});
+
+      document.querySelector('.remove-button')
+      .addEventListener('click', () => {number--});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 7i
+</title>
+<style>
+
+</style>
+</head>
+<body>
+    <script>
+      function convertLength(Length , from , to){
+
+        // if((from !== 'km'&& to !== 'miles')||(from !== 'miles'&& to !== 'km')||
+        // (from !== 'km' && to !== 'ft')||
+        // (from !== 'miles' && to !== 'ft')){
+        //   return `Invalid unit:${}`
+        // } mistake i made
+         
+        // Corrected code -->
+        if( from!== 'km' && from!=='miles' && from!== 'ft'){
+        return `Invalid unit:${from}` ;
+        }else if ( to!== 'km' && to!=='miles' && to!== 'ft'){
+        return `Invalid unit:${to}` ;
+        }
+
+        if (from === 'miles' && to === 'km'){
+        return `${(Length*16)/10} km`;
+        }
+        else if (from === 'km' && to === 'miles'){
+        return `${(Length*10)/16} miles`;
+        }
+        else if ( from === 'km' && to === 'ft'){
+        return `${Length*3281} ft`;
+        }
+        else if ( from === 'ft' && to === 'km'){
+        return `${Length/3281} km`;
+        }
+        else if(from === 'miles' && to === 'ft') {
+        return `${Length*5280} ft`;
+        }
+        else if(from === 'ft' && to === 'miles') {
+        return `${Length/5280} miles`;
+        }
+        else if (from === to) {
+          return `${Length} ${from}`;
+        }
+      }
+      console.log(convertLength(50, 'miles', 'km'));
+      console.log(convertLength(32, 'km', 'miles'));
+      console.log(convertLength(60, 'km', 'km'));
+
+      console.log(convertLength(5, 'miles', 'km'));
+      console.log(convertLength(5, 'miles', 'ft'));
+      console.log(convertLength(5, 'km', 'ft'));
+      console.log(convertLength(5,'lbs','lbs'));
+    </script>
+</body>
+</html>

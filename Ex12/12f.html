@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 12f
+</title>
+<style>
+
+</style>
+</head>
+<body>
+  <button class="add-to-cart-button">
+    Add to cart
+  </button>
+  <div class="js-display-added"></div>
+ 
+  <script>
+    let timeOutId;
+    function displayAdded(){
+    const button = document.querySelector('.js-display-added');
+    button.innerHTML = '<p>Added</p>';
+
+    // First, cancel the previous timeout so that
+    // it doesn't remove the message too quickly.
+    clearTimeout(timeOutId);
+
+    timeOutId = setTimeout(() => {
+      button.innerHTML = '' ;
+    },1000);
+  };
+  document.querySelector('.add-to-cart-button')
+  .addEventListener('click', () => {displayAdded()})
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 7h
+</title>
+<style>
+
+</style>
+</head>
+<body>
+    <script>
+      function convertLength(Length , from , to){
+        if (from === 'miles' && to === 'km'){
+        return `${(Length*16)/10} KM`;
+        }
+        else if ( from === 'km' && to === 'ft'){
+        return `${Length*3281} ft`;
+        }
+        else if(from === 'miles' && to === 'ft') {
+        return `${Length*5280} ft`;
+        }
+      }
+      console.log((convertLength(5, 'miles', 'km')));
+      console.log((convertLength(5, 'miles', 'ft')));
+      console.log((convertLength(5, 'km', 'ft')));
+    </script>
+</body>
+</html>

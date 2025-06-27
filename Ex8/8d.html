@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 8d
+</title>
+<style>
+
+</style>
+</head>
+<body>
+    <script>
+      function comparePrice(product1 , product2){
+        // method ->
+        // if(product1.price > product2.price){
+        //   return product1;
+        // }
+        // else if(product2.price > product1.price){
+        //   return product2;
+        // }
+        //method->2 ternary
+        return product1.price>product2.price ? product2 : product1 ;
+       }
+
+
+      /*const product1 = {
+        name:'basketball',
+        price:2095
+      };
+
+      const product2 = {
+        name:'football',
+        price: 3095
+      };
+       console.log(comparePrice(product1 , product2));
+       console.log(comparePrice(
+        {name: 'volleyball',price: 3088},
+        {name: 'rugby',price: 2668}
+      ));*/
+      const cheaper1 = comparePrice(
+        {name:'basketball',price:2095},
+        {name:'football',price:3095}
+      )
+
+      console.log('Cheaper value is:',cheaper1);
+
+      const cheaper2 = comparePrice(
+        {name:'volleyball',price:2095},
+        {name:'tennisball',price:1095}
+      )
+       
+      console.log('Cheaper value is:',cheaper2);
+
+    </script>
+</body>
+</html>

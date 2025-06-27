@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 11m
+</title>
+<style>
+
+</style>
+</head>
+<body>
+    <script>
+      //method-->1
+      /*function minMax(nums){
+        let min = nums[0]||null;
+        let max = nums[0]||null;
+        for(let i = 0; i<nums.length; i++){
+          if(min>value){
+            min = value;
+          }
+          if(max<value){
+            max = value;
+          }
+        }
+        return {min,max} ;
+      }*/
+      function minMax(nums){
+        const result ={
+          min: null,
+          max: null
+        }
+
+        for(let i = 0; i<nums.length; i++){
+          const value = nums[i];
+          if(result.min>value ||result.min === null){
+            result.min = value;
+          }
+          if(result.max<value ||result.max ===null){
+            result.max = value;
+          }
+        }
+        return result ;
+      }
+
+      console.log(minMax([]));
+      console.log(minMax([3]));
+      console.log(minMax([3,5,10]));
+
+
+    </script>
+</body>
+</html>

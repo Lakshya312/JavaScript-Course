@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+Ex 12c
+</title>
+<style>
+
+</style>
+</head>
+<body>
+  <button class="js-start-button start-button">
+    Start
+  </button>
+    <script>
+
+    function updateButton(){
+      const element = document.querySelector('.js-start-button ');
+
+      setInterval(() => {
+        element.innerHTML = 'Finished!';
+      },1000);
+
+    }
+    document.querySelector('.start-button')
+      .addEventListener('click', () => {updateButton()})
+    </script>
+</body>
+</html>
