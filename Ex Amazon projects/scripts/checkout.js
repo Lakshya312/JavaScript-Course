@@ -35,6 +35,8 @@ cartSummaryHTML += `<div class="cart-item-container js-cart-item-container-${mat
               <span class="update-quantity-link link-primary js-update-quantity-link" data-product-id = "${matchingProduct.id}">
                 Update
               </span>
+              <input class="quantity-input">
+              <span class="save-quantity-link link-primary">Save</span>
               <span class="delete-quantity-link link-primary js-delete-quantity-link" data-product-id="${matchingProduct.id}">
                 Delete
               </span>
