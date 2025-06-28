@@ -1,3 +1,6 @@
+import {cart, addToCart} from '../data/cart.js';
+import {products} from '../data/products.js';
+import {formatCurrency} from './utils/money.js'
 let productHTML = '';
 
 products.forEach((product)=>{
@@ -20,7 +23,7 @@ productHTML += `<div class="product-container">
           </div>
 
           <div class="product-price">
-            $${(product.priceCents/100).toFixed(2)}
+            $${(formatCurrency(product.priceCents))}
           </div>
 
           <div class="product-quantity-container">
@@ -51,6 +54,15 @@ productHTML += `<div class="product-container">
         </div>`
 });
 
+function updateCartQuantity(){
+  let cartQuantity = 0;
+  cart.forEach((cartItem)=>{
+    cartQuantity+=cartItem.quantity ;
+  });
+  document.querySelector('.js-cart-quantity')
+    .innerHTML = cartQuantity;
+}
+
 document.querySelector('.js-product-grid')
   .innerHTML = productHTML ;
 
@@ -63,30 +75,8 @@ document.querySelectorAll('.js-add-to-cart')
       const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
       const quantity = Number(quantitySelector.value);
 
-      let matchingItem;
-
-      cart.forEach((item)=>{
-        if(productId === item.productId){
-          matchingItem = item;
-        };
-      });
-
-      if(matchingItem){
-        matchingItem.quantity += quantity ;
-      }else{
-        cart.push({
-          productId,
-          quantity
-        });
-      }
-      let cartQuantity = 0;
-      cart.forEach((item)=>{
-        cartQuantity+=item.quantity ;
-
-      });
-      
-      document.querySelector('.js-cart-quantity')
-        .innerHTML = cartQuantity;
+      addToCart(productId)
+      updateCartQuantity();
 
       const displayMessage = document.querySelector(`.js-added-to-cart-${productId}`);
       displayMessage.classList.add('added-to-cart-visible');
@@ -95,7 +85,7 @@ document.querySelectorAll('.js-add-to-cart')
 
       timeoutId[productId] = setTimeout(()=> {
       displayMessage.classList.remove('added-to-cart-visible');
-      },2000);
+      },1500);
     });
   });
 
