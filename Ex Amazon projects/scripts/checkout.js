@@ -135,7 +135,7 @@ document.querySelectorAll('.js-save-quantity-link')
   .forEach((savedQuantity)=>{
     const productId = savedQuantity.dataset.productId;
     const inputElement = document.querySelector(`.js-quantity-input-${productId}`);
-    
+
     savedQuantity.addEventListener('click',()=>{
     handleCartQuantity(productId );
     });
@@ -151,13 +151,23 @@ function handleCartQuantity(productId){
   const inputElement = document.querySelector(`.js-quantity-input-${productId}`);
   const inputValue = Number(inputElement.value);
 
-  updateQuantity(productId, inputValue);
+  if(inputValue>=0 && inputValue<1000){
+    updateQuantity(productId, inputValue);
 
-  const newQuantity = document.querySelector(`.js-quantity-label-${productId}`);
-  newQuantity.innerHTML = `${inputValue}`;
-
-  updateCartQuantity();
-
-  const container = document.querySelector(`.js-cart-item-container-${productId}`);
-  container.classList.remove('is-editing-quantity');
+    const newQuantity = document.querySelector(`.js-quantity-label-${productId}`);
+    newQuantity.innerHTML = `${inputValue}`;
+  
+    updateCartQuantity();
+  
+    inputElement.value = '';
+  
+    const container = document.querySelector(`.js-cart-item-container-${productId}`);
+    container.classList.remove('is-editing-quantity');
+  }else if(inputValue>=1000){
+    alert('Value is too large!');
+    inputElement.value = '';
+  }else if(inputValue<0){
+    alert('Invalid value!');
+    inputElement.value = '';
+  }
 }
