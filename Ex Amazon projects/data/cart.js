@@ -51,3 +51,11 @@ export function calculateCartQuantity(){
   });
   return cartQuantity;
 }
+export function updateQuantity(productId, inputValue){
+  cart.forEach((cartItem)=>{
+    if(productId === cartItem.productId){
+      cartItem.quantity = inputValue;
+    }
+  });
+  saveToStorage();
+}

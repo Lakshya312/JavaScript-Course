@@ -9,6 +9,7 @@
 </style>
 </head>
 <body>
+  <input type="datetime-local" name="" id="">
 
   <select name="numbers" id="numbers">
     <option value="1">1</option>
@@ -20,7 +21,7 @@
   </select>
 
     <script>
-      const todoList = [
+/*      const todoList = [
   { name: 'wash clothes', dueDate: '2025-03-12' },
   { name: 'make breakfast', dueDate: '2025-04-11' }
 ];
@@ -32,8 +33,16 @@ const isDuplicate = todoList.some((item) => {
   return item.name === inputName && item.dueDate === inputDate;
 });
 
-console.log(isDuplicate); // true ✅
+console.log(isDuplicate); // true ✅*/
 
+const cart = {
+  item: 'ball',
+  quantity: 5
+}
+const matching = cart;
+matching.quantity = 10;
+console.log(matching)
+console.log(cart)
 
     </script>
 </body>
