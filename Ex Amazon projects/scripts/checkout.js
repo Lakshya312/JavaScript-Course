@@ -2,7 +2,8 @@ import
 { calculateCartQuantity, 
   cart, 
   removeFromCart,
-  updateQuantity} 
+  updateQuantity,
+  updateDeliveryOption} 
   from "../data/cart.js";
 import { products } from "../data/products.js";
 import  formatCurrency  from "./utils/money.js";
@@ -97,7 +98,9 @@ function deliveryOptionsHTML(matchingProduct, cartItem){
     const isChecked = deliveryOption.id === cartItem.deliveryOptionId ;
 
     html += `
-      <div class="delivery-option">
+      <div class="delivery-option js-delivery-option"
+        data-product-id = "${matchingProduct.id}"
+        data-delivery-option-id = "${deliveryOption.id}">
         <input type="radio"
           ${isChecked ? 'checked': ''}
           class="delivery-option-input"
@@ -118,14 +121,13 @@ function deliveryOptionsHTML(matchingProduct, cartItem){
   return html;
 }
 
- 
 document.querySelector('.js-order-summary')
-  .innerHTML = cartSummaryHTML;
+.innerHTML = cartSummaryHTML;
 
 document.querySelectorAll('.js-delete-quantity-link')
   .forEach((link)=>{
     link.addEventListener('click', ()=>{
-      const productId = link.dataset.productId;
+      const {productId} = link.dataset;
       removeFromCart(productId);
 
       const container = document.querySelector(`.js-cart-item-container-${productId}`);
@@ -134,6 +136,14 @@ document.querySelectorAll('.js-delete-quantity-link')
       updateCartQuantity();
     });
   });
+  
+document.querySelectorAll('.js-delivery-option')
+.forEach((element)=>{
+  element.addEventListener('click',()=>{
+    const {productId, deliveryOptionId} = element.dataset ; 
+    updateDeliveryOption(productId, deliveryOptionId);
+  });
+});
 
 updateCartQuantity();
 function updateCartQuantity(){
