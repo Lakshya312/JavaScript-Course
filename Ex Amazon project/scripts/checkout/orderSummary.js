@@ -1,11 +1,11 @@
 import 
-{ calculateCartQuantity, 
+{ updateCartQuantity, 
   cart, removeFromCart, updateQuantity, updateDeliveryOption} from "../../data/cart.js";
-import { products, getProduct } from "../../data/products.js";
+import { getProduct } from "../../data/products.js";
 import  formatCurrency  from "../utils/money.js";
-import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
-import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
+import { deliveryOptions, getDeliveryOption, calculateDeliveryDate} from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
+import { renderCheckoutHeader } from "./checkoutHeader.js";
 
 export function renderOrderSummary(){
 
@@ -19,9 +19,7 @@ export function renderOrderSummary(){
 
   const deliveryOption = getDeliveryOption(deliveryOptionId);
 
-const today = dayjs(); 
-const deliveryDate = today.add(deliveryOption.deliveryDate, 'days');
-const dateString = deliveryDate.format('dddd, MMMM D');
+  const dateString = calculateDeliveryDate(deliveryOption);
 
   cartSummaryHTML += `
       <div class="cart-item-container
@@ -43,7 +41,7 @@ const dateString = deliveryDate.format('dddd, MMMM D');
             </div>
             <div class="product-quantity">
               <span>
-                  Quantity: <span class="js-quantity-label-${matchingProduct.id} quantity-label">${cartItem.quantity}</span>
+                  Quantity: <span class="js-quantity-label quantity-label">${cartItem.quantity}</span>
               </span>
               <span class="update-quantity-link link-primary js-update-quantity-link" data-product-id = "${matchingProduct.id}">
                 Update
@@ -72,9 +70,7 @@ const dateString = deliveryDate.format('dddd, MMMM D');
   function deliveryOptionsHTML(matchingProduct, cartItem){
     let html = '';
     deliveryOptions.forEach((deliveryOption) => {
-      const today = dayjs(); 
-      const deliveryDate = today.add(deliveryOption.deliveryDate, 'days');
-      const dateString = deliveryDate.format('dddd, MMMM D');
+      const dateString = calculateDeliveryDate(deliveryOption);
       const priceString = deliveryOption.priceCents === 0
         ? 'FREE'
         : `$${formatCurrency(deliveryOption.priceCents)}`;
@@ -115,9 +111,11 @@ const dateString = deliveryDate.format('dddd, MMMM D');
         removeFromCart(productId);
 
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
-
-        container.remove();  
+        container.remove(); 
+         
         updateCartQuantity();
+        renderCheckoutHeader();
+        renderOrderSummary();
         renderPaymentSummary();
       });
     });
@@ -131,14 +129,6 @@ const dateString = deliveryDate.format('dddd, MMMM D');
       renderPaymentSummary();
     });
   });
-
-  updateCartQuantity();
-  function updateCartQuantity(){
-    const cartQuantity = calculateCartQuantity();
-
-    document.querySelector('.js-return-to-home-link')
-      .innerHTML = `${cartQuantity} items`;
-  }
 
   document.querySelectorAll('.js-update-quantity-link')
     .forEach((updateLink)=>{
@@ -155,7 +145,7 @@ const dateString = deliveryDate.format('dddd, MMMM D');
       const inputElement = document.querySelector(`.js-quantity-input-${productId}`);
 
       savedQuantity.addEventListener('click',()=>{
-      handleCartQuantity(productId );
+      handleCartQuantity(productId);
       });
 
       inputElement.addEventListener('keydown',(event)=>{
@@ -171,16 +161,17 @@ const dateString = deliveryDate.format('dddd, MMMM D');
 
     if(inputValue>=0 && inputValue<1000){
       updateQuantity(productId, inputValue);
-
-      const newQuantity = document.querySelector(`.js-quantity-label-${productId}`);
-      newQuantity.innerHTML = `${inputValue}`;
-    
       updateCartQuantity();
-    
+
       inputElement.value = '';
     
       const container = document.querySelector(`.js-cart-item-container-${productId}`);
       container.classList.remove('is-editing-quantity');
+
+      renderPaymentSummary();
+      renderCheckoutHeader();
+      renderOrderSummary();
+
     }else if(inputValue>=1000){
       alert('Value is too large!');
       inputElement.value = '';

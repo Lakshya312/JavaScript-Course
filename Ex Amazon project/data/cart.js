@@ -75,3 +75,7 @@ export function updateDeliveryOption(productId, deliveryOptionId){
   
   saveToStorage();
 }
+export function updateCartQuantity(){
+  const cartQuantity = calculateCartQuantity();
+  return cartQuantity ;
+}

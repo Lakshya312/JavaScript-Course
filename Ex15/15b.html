@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+Ex 15b
+</title>
+<style>
+
+</style>
+</head>
+<body>
+    <script type="module">
+    import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
+    const today = dayjs();
+    const date = today.add(1, 'month');
+    const updatedDate = date.format('MMMM D');
+    console.log(updatedDate);
+    </script>
+</body>
+</html>
