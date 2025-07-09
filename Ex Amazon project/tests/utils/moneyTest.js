@@ -10,4 +10,7 @@ describe('test suite: formatCurrency', ()=>{
   it('rounds to 2 decimal places', ()=>{
     expect(formatCurrency(2000.5)).toEqual('20.01');
   });
+  it('works with negative numbers', () => {
+    expect(formatCurrency(-500)).toEqual('-5.00');
+  });
 });
