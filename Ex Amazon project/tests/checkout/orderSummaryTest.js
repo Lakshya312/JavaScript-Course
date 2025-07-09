@@ -32,8 +32,17 @@ describe('test suite: renderOrderSummary', ()=>{
   });
 
   afterEach(()=>{
+    expect(
+      document.querySelector(`.js-product-name-${productId2}`).innerText
+    ).toContain(name2);
+
+    expect(
+      document.querySelector(`.js-product-price-${productId2}`).innerText
+    ).toContain('$20.95');
+
     document.querySelector('.js-test-container')
     .innerHTML = '';
+
   });
 
   it('it displays the cart',() =>{
@@ -49,10 +58,9 @@ describe('test suite: renderOrderSummary', ()=>{
     expect(
       document.querySelector(`.js-product-name-${productId1}`).innerText
     ).toContain(name1)
-    
     expect(
-      document.querySelector(`.js-product-name-${productId2}`).innerText
-    ).toContain(name2)
+      document.querySelector(`.js-product-price-${productId1}`).innerText
+    ).toContain('$10.90');
 
   });
 
@@ -72,8 +80,5 @@ describe('test suite: renderOrderSummary', ()=>{
     expect(cart.length).toEqual(1);
     expect(cart[0].productId).toEqual(productId2);
     
-    expect(
-      document.querySelector(`.js-product-name-${productId2}`).innerText
-    ).toContain(name2)
   });
 })
