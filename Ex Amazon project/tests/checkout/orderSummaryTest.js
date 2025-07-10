@@ -18,11 +18,11 @@ describe('test suite: renderOrderSummary', ()=>{
     spyOn(localStorage, 'getItem').and.callFake(() => {
       return JSON.stringify([{
         productId: productId1,
-        quantity: 1,
+        quantity: 2,
         deliveryOptionId: '1'
       },{
         productId: productId2,
-        quantity:2,
+        quantity:1,
         deliveryOptionId: '2'
       }]);
     });
@@ -42,11 +42,11 @@ describe('test suite: renderOrderSummary', ()=>{
     expect(document.querySelectorAll('.js-cart-item-container').length).toEqual(2);
     expect(
       document.querySelector(`.js-product-quantity-${productId1}`).innerText
-    ).toContain('Quantity: 1');
+    ).toContain('Quantity: 2');
 
     expect(
       document.querySelector(`.js-product-quantity-${productId2}`).innerText
-    ).toContain('Quantity: 2');
+    ).toContain('Quantity: 1');
     expect(
       document.querySelector(`.js-product-name-${productId1}`).innerText
     ).toContain(name1)
@@ -98,5 +98,11 @@ describe('test suite: renderOrderSummary', ()=>{
     expect(cart.length).toEqual(2);
     expect(cart[0].productId).toEqual(productId1);
     expect(cart[0].deliveryOptionId).toEqual('3');
+    expect(
+      document.querySelector('.js-payment-summary-shipping').innerText
+    ).toEqual('$14.98');
+    expect(
+      document.querySelector('.js-payment-summary-total').innerText
+    ).toEqual('$63.50');
   });
 })
