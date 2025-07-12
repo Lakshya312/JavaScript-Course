@@ -39,22 +39,6 @@ class product {
   }
 }
 
-const product1 = new product({
-  id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-  image: "images/products/athletic-cotton-socks-6-pairs.jpg",
-  name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
-  rating: {
-    stars: 4.5,
-    count: 87
-  },
-  priceCents: 1090,
-  keywords: [
-    "socks",
-    "sports",
-    "apparel"
-  ]
-});
-
 class Clothing extends product {
   sizeChartLink;
   
@@ -794,6 +778,45 @@ export const products = [
   }
   
 });
+
+/*const date = new Date();
+console.log(date);
+console.log(date.toLocaleDateString());*/
+
+//console.log(this); gives undefined as here it is outside the object which means it is poiting towards the global object (window).
+
+/*const obj2 = {
+  a: 100,
+  hello(){
+    const obj3 = {
+       alright(){
+        console.log(this.a);
+      },
+      a: 200,
+      b: 'obj3.alright()'
+    }
+    console.log(obj3);
+  }
+};
+
+obj2.hello(); // Might be 100 or undefined depending on context
+*/
+
+
+/*function logThis(){
+  console.log(this);
+}
+logThis();
+logThis.call('hello');
+
+const object3 = {
+  method: ()=>{
+    console.log(this);
+  }
+}
+object3.method();*/
+
+
 
 
 
