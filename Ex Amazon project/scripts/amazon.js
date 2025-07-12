@@ -41,6 +41,8 @@ productHTML += `<div class="product-container">
             </select>
           </div>
 
+          ${product.extraInfoHTML()}
+
           <div class="product-spacer"></div>
 
           <div class="js-added-to-cart-${product.id} added-to-cart">
