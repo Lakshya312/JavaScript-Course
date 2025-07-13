@@ -16,7 +16,7 @@ productHTML += `<div class="product-container">
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="${product.getImage()}">
+              src="${product.getStarsUrl()}">
             <div class="product-rating-count link-primary">
               ${product.rating.count}
             </div>
@@ -42,8 +42,6 @@ productHTML += `<div class="product-container">
           </div>
 
           ${product.extraInfoHTML()}
-          ${product.instructionsInfoHTML()}
-          ${product.warrantyInfoHTML()}
           
           <div class="product-spacer"></div>
 
