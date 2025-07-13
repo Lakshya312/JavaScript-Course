@@ -1,5 +1,4 @@
 class Cart{
-
     cartItems;
     #localStorageKey;
 
@@ -96,7 +95,6 @@ class Cart{
     }
   
 }
-
   
 const cart = new Cart('cart-oop');
   
