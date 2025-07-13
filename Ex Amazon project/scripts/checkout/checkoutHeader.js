@@ -1,4 +1,4 @@
-import { updateCartQuantity } from "../../data/cart.js";
+import { Cart, cart } from "../../data/cart-class.js";
 
 export function renderCheckoutHeader(){
   const checkoutHeaderHTML = `
@@ -10,14 +10,13 @@ export function renderCheckoutHeader(){
     </div>
     <div class="checkout-header-middle-section">
       Checkout (<a class="return-to-home-link js-return-to-home-link"
-        href="amazon.html">${updateCartQuantity()} items</a>)
+        href="amazon.html">${cart.updateCartQuantity()} items</a>)
     </div>
 
     <div class="checkout-header-right-section">
       <img src="images/icons/checkout-lock-icon.png">
     </div>
   `;
-
   document.querySelector('.js-header-content')
     .innerHTML = checkoutHeaderHTML;
 }

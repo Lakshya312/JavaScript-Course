@@ -1,8 +1,8 @@
-import {cart,addToCart, calculateCartQuantity} from '../data/cart.js';
+import {Cart} from '../data/cart-class.js';
 import {products} from '../data/products.js';
-import {formatCurrency} from './utils/money.js'
-let productHTML = '';
 
+let productHTML = '';
+const cart = new Cart('cart-oop');
 products.forEach((product)=>{
 productHTML += `<div class="product-container">
           <div class="product-image-container">
@@ -57,7 +57,7 @@ productHTML += `<div class="product-container">
 });
 updateCartQuantity();
 export function updateCartQuantity(){
-  const cartQuantity = calculateCartQuantity();
+  const cartQuantity = cart.calculateCartQuantity();
   document.querySelector('.js-cart-quantity')
     .innerHTML = cartQuantity;
 }
@@ -74,7 +74,7 @@ document.querySelectorAll('.js-add-to-cart')
       const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
       const quantity = Number(quantitySelector.value);
 
-      addToCart(productId,quantity);
+      cart.addToCart(productId,quantity);
       updateCartQuantity();
 
       const displayMessage = document.querySelector(`.js-added-to-cart-${productId}`);

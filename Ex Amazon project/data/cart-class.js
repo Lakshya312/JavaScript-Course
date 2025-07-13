@@ -1,4 +1,4 @@
-class Cart{
+export class Cart{
     cartItems;
     #localStorageKey;
 
@@ -12,11 +12,11 @@ class Cart{
     
     [{
       productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-      quantity: 1,
+      quantity: 2,
       deliveryOptionId: '1'
     },{
       productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
-      quantity:2,
+      quantity:1,
       deliveryOptionId: '2'
     }];
     }
@@ -90,17 +90,18 @@ class Cart{
     }
   
     updateCartQuantity(){
-      const cartQuantity = calculateCartQuantity();
+      const cartQuantity = this.calculateCartQuantity();
       return cartQuantity ;
     }
   
 }
-  
-const cart = new Cart('cart-oop');
-  
+ 
+export const cart = new Cart('cart-oop');
+/* 
 const businessCart = new Cart('cart-business');
 
 console.log(cart);
 console.log(businessCart);
 
-console.log(businessCart instanceof Cart)
+console.log(businessCart instanceof Cart);
+*/

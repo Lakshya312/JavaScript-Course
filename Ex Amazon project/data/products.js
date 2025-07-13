@@ -870,8 +870,3 @@ const object3 = {
   }
 }
 object3.method();*/
-
-
-
-
-
