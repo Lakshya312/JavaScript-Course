@@ -1,17 +1,17 @@
 export class Car{
-  brand;
-  model;
+  #brand;
+  #model;
   speed = 0;
   isTrunkOpen;
 
   constructor(carDetails){
-    this.brand = carDetails.brand;
-    this.model = carDetails.model;
+    this.#brand = carDetails.brand;
+    this.#model = carDetails.model;
     this.isTrunkOpen = false;
   }
 
   displayInfo(){
-    console.log(`${this.brand} ${this.model}, Speed: ${this.speed} km/h, Trunk: ${this.isTrunkOpen?'Open':'Closed'}`);
+    console.log(`${this.#brand} ${this.#model}, Speed: ${this.speed} km/h, Trunk: ${this.isTrunkOpen?'Open':'Closed'}`);
   }
 
   go(){
