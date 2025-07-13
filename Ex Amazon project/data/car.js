@@ -1,7 +1,7 @@
 export class Car{
   #brand;
   #model;
-  #speed = 0;
+  speed = 0;
   isTrunkOpen;
 
   constructor(carDetails){
@@ -11,23 +11,23 @@ export class Car{
   }
 
   displayInfo(){
-    console.log(`${this.#brand} ${this.#model}, Speed: ${this.#speed} km/h, Trunk: ${this.isTrunkOpen?'Open':'Closed'}`);
+    console.log(`${this.#brand} ${this.#model}, Speed: ${this.speed} km/h, Trunk: ${this.isTrunkOpen?'Open':'Closed'}`);
   }
 
   go(){
-    if(this.#speed<=200 && !this.isTrunkOpen){
-    this.#speed+=5;
+    if(this.speed<=200 && !this.isTrunkOpen){
+    this.speed+=5;
     }
   }
 
   brake(){
-    if(this.#speed>0){
-      this.#speed-=5;
+    if(this.speed>0){
+      this.speed-=5;
     }  
   }
 
   openTrunk(){
-    if(this.#speed === 0){
+    if(this.speed === 0){
       this.isTrunkOpen =true;
     }
   }
@@ -61,9 +61,9 @@ constructor(carDetails){
 }
 
 go(){
-  if(this.#speed<=300){
-  this.#speed+=this.acceleration;
-  } // this showing error because speed is private properties and can only be accessed inside the parent class not child class.
+  if(this.speed<=300){
+  this.speed+=this.acceleration;
+  } // this showing error becausespeed is private properties and can only be accessed inside the parent class not child class.
 }
 
 openTrunk(){
