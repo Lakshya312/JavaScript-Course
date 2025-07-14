@@ -85,21 +85,35 @@ extraInfoHTML(){
   <a href="${this.warrantyLink}" target="_blank">
   Warranty.
   </a>`;
+ }
 }
 
-/*instructionsInfoHTML(){
-  return `<a href="${this.instructionsLink}" target="_blank">
-  Instructions
-  </a>`;
+export let products = [];
+
+export function loadProducts(fun){
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+    products = JSON.parse(xhr.response).map((productDetails)=>{
+      if(productDetails.type === 'clothing'){
+        return new Clothing(productDetails);
+      }else if(productDetails.type === 'appliance'){
+        return new Appliances(productDetails);
+      }
+      else{
+        return new Product(productDetails);
+      }
+    });
+
+    console.log('load products');
+    fun();
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/products');
+  xhr.send();
 }
 
-warrantyInfoHTML(){
-  return `<a href="${this.warrantyLink}" target="_blank">
-  Warranty.
-  </a>`;
-}*/
-}
-
+/*
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -833,7 +847,7 @@ export const products = [
     return new Product(productDetails);
   }
 });
-
+*/
 /*const date = new Date();
 console.log(date);
 console.log(date.toLocaleDateString());*/
