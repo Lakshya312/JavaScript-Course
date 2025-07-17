@@ -5,10 +5,27 @@ import { loadProducts, loadProductsFetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
 //import '../data/backend-practise.js';
 
+async function loadPage(){
+  
+  await loadProductsFetch();
+
+  await new Promise((resolve)=>{
+    loadCart (()=>{
+      resolve('value1');
+    });
+});
+
+  renderCheckoutHeader();
+  renderOrderSummary();
+  renderPaymentSummary();
+}
+
+loadPage();
+/*
 Promise.all([
   loadProductsFetch(),
   new Promise((resolve)=>{
-    console.log('start promise')
+    console.log('start promise - checkout.js line 19')
     loadCart (()=>{
       console.log('finished loading')
       resolve('value1');
@@ -26,7 +43,7 @@ Promise.all([
   renderOrderSummary();
   renderPaymentSummary();
 });
-
+*/
 /*
 new Promise((resolve)=>{
   console.log('start promise')
