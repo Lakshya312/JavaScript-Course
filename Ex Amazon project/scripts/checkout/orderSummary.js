@@ -1,14 +1,14 @@
-import 
-{Cart, cart} from "../../data/cart-class.js";
+//import {cart} from "../../data/cart-class.js";
 import { getProduct } from "../../data/products.js";
 import  formatCurrency  from "../utils/money.js";
 import { deliveryOptions, getDeliveryOption, calculateDeliveryDate} from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
 import { renderCheckoutHeader } from "./checkoutHeader.js";
+import { updateCartQuantity, cart, updateQuantity, removeFromCart, updateDeliveryOption } from "../../data/cart.js";
 
 export function renderOrderSummary(){
   let cartSummaryHTML = '';
-  cart.cartItems.forEach((cartItem)=>{
+  cart.forEach((cartItem)=>{
   const productId = cartItem.productId;
 
   const matchingProduct = getProduct(productId);
@@ -112,7 +112,7 @@ export function renderOrderSummary(){
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
         container.remove(); 
          
-        cart.updateCartQuantity();
+        updateCartQuantity();
         renderCheckoutHeader();
         renderOrderSummary();
         renderPaymentSummary();
@@ -123,7 +123,7 @@ export function renderOrderSummary(){
   .forEach((element)=>{
     element.addEventListener('click',()=>{
       const {productId, deliveryOptionId} = element.dataset ; 
-      cart.updateDeliveryOption(productId, deliveryOptionId);
+      updateDeliveryOption(productId, deliveryOptionId);
       renderOrderSummary();
       renderPaymentSummary();
     });
@@ -159,8 +159,8 @@ export function renderOrderSummary(){
     const inputValue = Number(inputElement.value);
 
     if(inputValue>=0 && inputValue<1000){
-      cart.updateQuantity(productId, inputValue);
-      cart.updateCartQuantity();
+      updateQuantity(productId, inputValue);
+      updateCartQuantity();
 
       inputElement.value = '';
     
