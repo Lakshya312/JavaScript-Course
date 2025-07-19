@@ -3,7 +3,7 @@ import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
-//import '../data/backend-practise.js';
+import '../data/backend-practise.js';
 
 async function loadPage(){
   try{

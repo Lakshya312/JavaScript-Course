@@ -104,7 +104,7 @@ export function loadProductsFetch(){
         return new Product(productDetails);
       }
     });
-    console.log('load products twice')
+
   }).catch((error) => {
     console.log('Unexpected error. Please try again later.');
   });
@@ -126,7 +126,6 @@ export function loadProducts(fun){
       }
     });
 
-    console.log('load products');
     fun();
   });
 
