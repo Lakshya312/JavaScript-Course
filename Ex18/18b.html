@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 18b
+
+</title>
+<style>
+
+</style>
+</head>
+<body>
+  <script>
+    fetch(
+        'https://supersimplebackend.dev/greeting'
+      ).then((response) => {
+        return response.text();
+      }).then((text) => {
+        console.log(text);
+      });
+  </script>
+</body>
+</html>

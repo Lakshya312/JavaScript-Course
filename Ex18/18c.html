@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 18c
+</title>
+<style>
+
+</style>
+</head>
+<body>
+    <script>
+        async function displayGreeting(){
+        const  greeting = await fetch('https://supersimplebackend.dev/greeting');
+        const response = await greeting.text();
+        console.log(response);
+      }
+
+      displayGreeting();
+    </script>
+</body>
+</html>

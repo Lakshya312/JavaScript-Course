@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 18a
+</title>
+<style>
+
+</style>
+</head>
+<body>
+    <script>
+      const xhr = new XMLHttpRequest();
+
+      xhr.addEventListener('load', () => {
+        console.log(xhr.response);
+      });
+
+      xhr.open('GET', 'https://supersimplebackend.dev/greeting');
+      xhr.send();
+    </script>
+</body>
+</html>
