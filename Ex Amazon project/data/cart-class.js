@@ -1,4 +1,4 @@
-export class Cart{
+class Cart{
     cartItems;
     #localStorageKey;
 
@@ -97,6 +97,28 @@ export class Cart{
 }
  
 export const cart = new Cart('cart-oop');
+
+export async function loadCartFetch(){
+  const promise = await fetch('https://supersimplebackend.dev/cart').then(response => 
+    response.text()).catch((error) => {
+    console.log('Unexpected error. Please try again later.')
+  });
+
+  return promise;
+}
+
+export function loadCart(fun){
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+    //console.log(xhr.response);
+    fun();
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/cart');
+  xhr.send();
+}
+
 /* 
 const businessCart = new Cart('cart-business');
 

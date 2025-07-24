@@ -1,4 +1,4 @@
-import {Cart} from '../data/cart-class.js';
+import {cart} from '../data/cart-class.js';
 import {products, loadProducts} from '../data/products.js';
 
 loadProducts(renderProductsGrid);
@@ -6,7 +6,6 @@ loadProducts(renderProductsGrid);
 function renderProductsGrid(){
   let productHTML = '';
 
-  const cart = new Cart('cart-oop');
   products.forEach((product)=>{
   productHTML += `<div class="product-container">
             <div class="product-image-container">
