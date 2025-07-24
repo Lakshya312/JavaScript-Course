@@ -9,10 +9,8 @@ const name2 = "Intermediate Size Basketball";
 
 describe('test suite: renderOrderSummary', ()=>{
 
-  beforeAll((done)=>{
-    loadProductsFetch().then(() => {
-      done();
-    });
+  beforeAll(async ()=>{
+    await loadProductsFetch();
   });
 
   beforeEach(() => {
