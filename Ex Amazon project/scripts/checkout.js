@@ -7,7 +7,15 @@ import { loadCart, loadCartFetch } from "../data/cart-class.js";
 import '../data/backend-practise.js';
 
 async function loadPage(){
-  try{
+  await Promise.all([
+    loadProductsFetch(),
+    loadCartFetch(),
+  ]).then(() => {
+  renderCheckoutHeader();
+  renderOrderSummary();
+  renderPaymentSummary();
+  });
+  /*try{
    //throw 'error1';
 
     await loadProductsFetch();
@@ -18,7 +26,7 @@ async function loadPage(){
         //reject('error3');
         resolve('value1');
       });
-    });*/
+    });
 
     await loadCartFetch();
 
@@ -30,6 +38,7 @@ async function loadPage(){
   renderCheckoutHeader();
   renderOrderSummary();
   renderPaymentSummary();
+  */
 }
 
 loadPage();
