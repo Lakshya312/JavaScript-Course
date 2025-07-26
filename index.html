@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      Ex 10j
+</title>
+<link rel="stylesheet" href="Ex10/Ex10j/10j.css">
+</head>
+<body>
+  <!-- Initialize display with the last calculation -->
+    <p class="display-calculation calculation">
+      <!-- This will be filled by JavaScript -->
+  </p>
+  
+  <!-- Rest of your calculator buttons remain the same -->
+  <p>
+      <button onclick="updateCalculation('1')">1</button>
+      <button onclick="updateCalculation('2')">2</button>
+      <button onclick="updateCalculation('3')">3</button>
+      <button class="operators" onclick="updateCalculation('+')">+</button>
+  </p>
+  <p>
+      <button onclick="updateCalculation('4')">4</button>
+      <button onclick="updateCalculation('5')">5</button>
+      <button onclick="updateCalculation('6')">6</button>
+      <button class="operators operator2" onclick="updateCalculation('-')">-</button>
+  </p>
+  <p>
+      <button onclick="updateCalculation('7')">7</button>
+      <button onclick="updateCalculation('8')">8</button>
+      <button onclick="updateCalculation('9')">9</button>
+      <button class="operators operator2" onclick="updateCalculation('*')">*</button>
+    </p>
+      <p>
+        <button onclick="updateCalculation('0')">0</button>
+        <button class="operator2" onclick="updateCalculation('.')">.</button>
+        <button onclick="
+        calculation = eval(calculation);
+        console.log(calculation);
+        localStorage.setItem('value', JSON.stringify(calculation));
+        document.querySelector('.display-calculation').innerHTML = calculation;">=</button>
+    
+        <button class="operators operator2" onclick="updateCalculation('/')">/</button>
+      </p>
+  <p>
+      <button class=clear-button onclick="
+          calculation = '';
+          console.log(calculation);
+          localStorage.removeItem('value');
+          document.querySelector('.display-calculation').innerHTML = '';
+      ">Clear</button>
+  </p>
+  <script src="Ex10/Ex10j/10j.js"></script>
+</body>
+</html>
