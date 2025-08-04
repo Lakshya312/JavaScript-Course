@@ -21,7 +21,9 @@ function renderTodoList(){
           const {name, dueDate} = todoObject ;
           const html = `<div>${name} </div>
           <div>${dueDate || 'No due date'}</div>
-          <button class="delete-todo-button js-delete-todo-button">Delete</button>
+          <button class="delete-todo-button js-delete-todo-button">
+          Delete
+          </button>
           `;
           todoListHTML += html ;
     })
@@ -41,17 +43,32 @@ function renderTodoList(){
         todoListHTML += html ;
     }
 */
-    document.querySelector('.js-todo-list')
-    .innerHTML = todoListHTML;
+document.querySelector('.js-todo-list')
+.innerHTML = todoListHTML;
 
-    document.querySelectorAll('.js-delete-todo-button')
-        .forEach((deleteButton, index) => {
-            deleteButton.addEventListener('click', ()=>{
-                todoList.splice(index, 1);
-                saveToStorage();
-                renderTodoList();
-            });
-        });
+document.querySelectorAll('.js-delete-todo-button')
+   .forEach((deleteButton, index) => {
+   deleteButton.addEventListener('click', ()=>{
+   checkButton = document.querySelector('.js-configuration-button');
+   checkButton.innerHTML = `<div>Are you sure you want to delete this from list?</div><div>
+   <button class="js-yes-button yes-button">Yes</button> <button class="js-no-button no-button">No</button>
+   </div>`;
+
+   document.querySelector('.js-yes-button')
+      .addEventListener('click',() => {
+      todoList.splice(index, 1);
+      saveToStorage();
+      removeConfiguration();
+      clearInputValue();
+      renderTodoList();
+      });
+
+   document.querySelector('.js-no-button')
+      .addEventListener('click',() => {
+         removeConfiguration();
+         });
+   });
+});
 }
 
 let inputElement;
@@ -84,41 +101,40 @@ function configurationButton(){
     if(!inputElement.value.trim()){
         alert(`You haven't added anyting to the list.
 Please add something. `);
-        clearInputValue();
-    }else if (!dueDateInput.value.trim()){
-        checkButton = document.querySelector('.js-configuration-button');
+  }else if (!dueDateInput.value.trim()){
+    checkButton = document.querySelector('.js-configuration-button');
 
-        checkButton.innerHTML = '<div>Are you sure you want to add this  to list without due date ?</div><div><button class="yes-button yes-button">Yes</button> <button class="no-button no-button">No</button></div>'
-        document.querySelector('.yes-button')
-            .addEventListener('click',() => {
-                todoList.push({
-                    //name: name,
-                    name: inputElement.value,
-                    //dueDate: dueDate
-                    dueDate: dueDateInput.value
-                });
-                saveToStorage(); 
-                renderTodoList();
-                removeConfiguration();
-                clearInputValue();
+    checkButton.innerHTML = '<div>Are you sure you want to add this  to list without due date ?</div><div><button class="js-yes-button yes-button">Yes</button> <button class="js-no-button no-button">No</button></div>'
+    document.querySelector('.js-yes-button')
+        .addEventListener('click',() => {
+            todoList.push({
+                //name: name,
+                name: inputElement.value,
+                //dueDate: dueDate
+                dueDate: dueDateInput.value
+            });
+            saveToStorage(); 
+            removeConfiguration();
+            clearInputValue();
+            renderTodoList();
+        });
+
+    document.querySelector('.js-no-button')
+        .addEventListener('click',() => {
+            removeConfiguration();
             });
 
-        document.querySelector('.no-button')
-            .addEventListener('click',() => {
-                removeConfiguration();
-                });
-
-            }
-    else{
-        todoList.push({
-            //name: name,
-            name: inputElement.value,
-            //dueDate: dueDate
-            dueDate: dueDateInput.value
-        });
-        renderTodoList();
-        clearInputValue();
-    }            
+          }
+  else{
+      todoList.push({
+          //name: name,
+          name: inputElement.value,
+          //dueDate: dueDate
+          dueDate: dueDateInput.value
+      });
+      renderTodoList();
+      clearInputValue();
+  }            
 }
 
 function sameTodoListConfiguration(){

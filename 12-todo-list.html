@@ -7,14 +7,16 @@
   <link rel="stylesheet" href="styles/12-todo-list.css">
 </head>
 <body>
-  <p>Todo List</p>
-  <div class="todo-input-grid">
-    <input class="js-name-input name-input" placeholder="Todo name">
-    <input class="js-due-date-input due-date-input" type="date">
-    <button class="add-todo-button js-add-todo-button">Add</button>
+  <h1>📝 Todo List</h1>
+  <div class="container">
+    <div class="todo-input-grid">
+      <input class="js-name-input name-input" placeholder="Todo name">
+      <input class="js-due-date-input due-date-input" type="date">
+      <button class="add-todo-button js-add-todo-button">Add</button>
+    </div>
+    <div class="js-configuration-button configuration-button"></div>
+    <div class="js-todo-list todo-grid"></div>
   </div>
-  <div class="js-configuration-button css-configuration-grid"></div>
-  <div class="js-todo-list todo-grid"></div>
   <script src="script/12-todo-list.js"></script>
 </body>
 </html>
