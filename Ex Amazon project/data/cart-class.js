@@ -39,7 +39,7 @@ class Cart{
       } else {
         this.cartItems.push({
           productId,
-          quantity,
+          quantity: quantity || 1,
           deliveryOptionId: '1'
         });
       }

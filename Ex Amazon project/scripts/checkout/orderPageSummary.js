@@ -2,6 +2,7 @@ import {orders} from '../../data/orders.js';
 import { getProduct, loadProductsFetch } from '../../data/products.js';
 import formatCurrency from '../utils/money.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+import { cart } from '../../data/cart-class.js';
 
 export async function renderOrderPage(){
   await loadProductsFetch();
@@ -42,8 +43,10 @@ export async function renderOrderPage(){
 
   function productsListHTML(order){
     let productsListHTML = '';
+    const orderId = order.id
     order.products.forEach((productDetails) => {
       const product = getProduct(productDetails.productId);
+      const quantity = productDetails.quantity;
       productsListHTML+=`<div class="product-image-container">
           <img src="${product.image}">
         </div>
@@ -58,21 +61,35 @@ export async function renderOrderPage(){
           <div class="product-quantity">
             Quantity: ${productDetails.quantity}
           </div>
-          <button class="buy-again-button button-primary">
+          <button class="buy-again-button button-primary js-buy-again-button" data-product-id = "${product.id}" data-quantity="${quantity}">
             <img class="buy-again-icon" src="images/icons/buy-again.png">
             <span class="buy-again-message">Buy it again</span>
           </button>
         </div>
 
         <div class="product-actions">
-          <a href="tracking.html">
+          <a href="tracking.html?orderId=${orderId}&productId=${product.id}">
             <button class="track-package-button button-secondary">
               Track package
             </button>
           </a>
         </div>`;
+
     });
 
     return productsListHTML;
   }
+
+  document.querySelectorAll('.js-buy-again-button')
+  .forEach((deleteButton) => {
+    deleteButton.addEventListener('click', () => {
+      const {productId} = deleteButton.dataset;
+      const {quantity} = Number(deleteButton.dataset);
+      cart.addToCart(productId, quantity);
+      renderOrderPage();
+  });
+});
+//Changed cart quantity using dom 
+document.querySelector('.js-cart-quantity')
+.innerHTML = cart.calculateCartQuantity();
 }
