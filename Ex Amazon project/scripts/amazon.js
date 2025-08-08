@@ -6,10 +6,21 @@ import {products, loadProducts, loadProductsFetch} from '../data/products.js';
 await loadProductsFetch();
 
 renderProductsGrid();
-function renderProductsGrid(){
+async function renderProductsGrid(){
+  await loadProductsFetch();
+
+  const url = new URL(window.location.href);
+  const search = url.searchParams.get('search');
+
+  let filteredProducts = products;
+  if(search){
+    filteredProducts = products.filter((product) =>{
+      return product.name.toLowerCase().includes(search.toLocaleLowerCase());
+    });
+  }
   let productHTML = '';
 
-  products.forEach((product)=>{
+  filteredProducts.forEach((product)=>{
   productHTML += `<div class="product-container">
       <div class="product-image-container">
         <img class="product-image"
@@ -61,15 +72,16 @@ function renderProductsGrid(){
       </button>
     </div>`
   });
+
+  document.querySelector('.js-product-grid')
+  .innerHTML = productHTML ;
+
   updateCartQuantity();
   function updateCartQuantity(){
     const cartQuantity = cart.calculateCartQuantity();
     document.querySelector('.js-cart-quantity')
       .innerHTML = cartQuantity;
   }
-
-  document.querySelector('.js-product-grid')
-    .innerHTML = productHTML ;
 
   const timeoutId = {};
 
@@ -92,5 +104,11 @@ function renderProductsGrid(){
         displayMessage.classList.remove('added-to-cart-visible');
         },1500);
       });
+    });
+
+  document.querySelector('.js-search-button')
+    .addEventListener('click',() => {
+      const search = document.querySelector('.js-search-bar').value;
+      window.location.href = `amazon.html?search=${search}`;
     });
 }
